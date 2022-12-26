@@ -13,6 +13,7 @@ The following plugins are incudes:-
 
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim)
 - [bluez71/vim-nightfly-colors](https://github.com/bluz71/vim-nightfly-colors)
+- [folke/tokyonight.nvim](https://hithub.com/folke/tokyonight.nvim)
 
 ## References
 
