@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local function keymap(mode, lhs, rhs) 
 
   if vim.fn.has('nvim-0.7') == 1 then
-    vim.keymap(mode, lhs, rhs)
+    vim.keymap.set(mode, lhs, rhs)
   else
     vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true } )
   end
