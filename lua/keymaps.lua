@@ -14,6 +14,7 @@ end
 keymap("n", "<Leader>Vi", ":e ~/.config/nvim/init.lua<CR>")
 keymap("n", "<Leader>Vk", ":e ~/.config/nvim/lua/keymaps.lua<CR>")
 keymap("n", "<Leader>Vo", ":e ~/.config/nvim/lua/options.lua<CR>")
+keymap("n", "<Leader>Vp", ":e ~/.config/nvim/lua/plugins-setup.lua<CR>")
 
 -- hide search highlights
 keymap("n", "<Leader>nh", ":nohl<CR>")
