@@ -27,7 +27,7 @@ keymap("n", "<leader>+", "<C-a>") -- increment
 keymap("n", "<leader>-", "<C-x>") -- decrement
 
 -- window management
-keymap("n", "<leader>\|", "<C-w>v") -- split window vertically
+keymap("n", "<leader>|", "<C-w>v") -- split window vertically
 keymap("n", "<leader>-", "<C-w>s") -- split window horizontally
 keymap("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
 keymap("n", "<leader>sx", ":close<CR>") -- close current split window
