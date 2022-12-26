@@ -21,6 +21,9 @@ end
 return packer.startup(function(use)
   -- packer can manage itself
   use("wbthomason/packer.nvim")
+  
+  -- color schemese
+  use("bluz71/vim-nightfly-guicolors")
 
   if packer_bootstrap then
       require("packer").sync()
