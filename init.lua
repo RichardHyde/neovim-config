@@ -1,4 +1,4 @@
-require("plugins-setup")
+require("plugins")
 require("options")
 require("keymaps")
 require("colorscheme")
