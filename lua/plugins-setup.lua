@@ -17,6 +17,14 @@ if not status then
   return
 end
 
+-- Run PackerCompile where this file is saved
+vim.cmd([[
+  augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins-setup.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 -- add list of plugins to install
 return packer.startup(function(use)
   -- packer can manage itself
@@ -27,6 +35,6 @@ return packer.startup(function(use)
   use("folke/tokyonight.nvim")
   
   if packer_bootstrap then
-      require("packer").sync()
+    require("packer").sync()
   end
- end)
+end)
