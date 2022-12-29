@@ -1,8 +1,15 @@
--- set colorscheme to nightfly with protected call
+local opt = vim.opt
+
+-- Colour setup
+opt.termguicolors = true
+
+-- set colorscheme to tokyonight with protected call
 -- in case it isn't installed
-local status, _ = pcall(vim.cmd, "colorscheme tokyonight")
-if not status then
-  print("Colorscheme not found!") -- print error if colorscheme not installed
+local status, tokyonight = pcall(require, "tokyonight")
+if status then
+
+  vim.cmd([[colorscheme tokyonight]])
   return
 end
+
 

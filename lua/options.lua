@@ -18,9 +18,6 @@ opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 
--- Colours
-opt.termguicolors = true
-opt.background = "dark"
 opt.signcolumn = "yes"
 
 -- Syntax highlighting
