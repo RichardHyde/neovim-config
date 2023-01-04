@@ -33,7 +33,20 @@ return packer.startup(function(use)
   -- color schemes
   use("bluz71/vim-nightfly-guicolors")
   use("folke/tokyonight.nvim")
-  
+  use("christianchiarulli/nvcode-color-schemes.vim")
+
+  -- 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end,
+    config = function()
+      require("configs.treesitter")
+    end,
+  }
+
   if packer_bootstrap then
     require("packer").sync()
   end
