@@ -8,7 +8,7 @@ opt.termguicolors = true
 local status, tokyonight = pcall(require, "tokyonight")
 if status then
 
-  vim.cmd([[colorscheme tokyonight]])
+  vim.cmd([[colorscheme tokyonight-night]])
   return
 end
 
