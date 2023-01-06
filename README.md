@@ -15,6 +15,19 @@ The following plugins are incudes:-
 - [bluez71/vim-nightfly-colors](https://github.com/bluz71/vim-nightfly-colors)
 - [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
+- [hrsh7th/cmp-path](https://github.com/hrsh7/cmp-path)
+- [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+- [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
+- [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim)
+- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
+- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga)
+- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [jose-elias-alverez/typescript.nvim](https://github.com/jose-elias-alverez/typescript.nvim)
+- [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim)
 
 ## References
 

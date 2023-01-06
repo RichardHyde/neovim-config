@@ -30,22 +30,53 @@ return packer.startup(function(use)
   -- packer can manage itself
   use("wbthomason/packer.nvim")
   
+  use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+
   -- color schemes
   use("bluz71/vim-nightfly-guicolors")
   use("folke/tokyonight.nvim")
   use("christianchiarulli/nvcode-color-schemes.vim")
 
-  -- 
+  -- Tree Sitter
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
     end,
-    config = function()
-      require("configs.treesitter")
-    end,
+    config = require("configs.treesitter"),
   }
+
+  -- autocompletion
+  use {-- completion plugin
+    "hrsh7th/nvim-cmp", 
+    config = require("configs.nvim-cmp"),
+  }
+  use("hrsh7th/cmp-buffer") -- source for text in buffer
+  use("hrsh7th/cmp-path") -- source for file system paths
+
+  -- snippets
+  use("L3MON4D3/LuaSnip") -- snippet engine
+  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
+  use("rafamadriz/friendly-snippets") -- useful snippets
+
+  -- managing & installing lsp servers, linters & formatters
+  use {
+    "williamboman/mason.nvim", 
+    config = require("configs.mason")
+  } -- in charge of managing lsp servers, linters & formatters
+  use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+
+  -- configuring lsp servers
+  use { 
+    "neovim/nvim-lspconfig",
+    config = require("configs.lspconfig"),
+  }-- easily configure language servers
+  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
+  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
+  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
+  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
 
   if packer_bootstrap then
     require("packer").sync()
