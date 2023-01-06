@@ -37,6 +37,12 @@ return packer.startup(function(use)
   use("folke/tokyonight.nvim")
   use("christianchiarulli/nvcode-color-schemes.vim")
 
+  -- file explorer
+  use {
+    "nvim-tree/nvim-tree.lua", 
+    config = require("configs.nvim-tree"), 
+  }
+
   -- Tree Sitter
   use {
     'nvim-treesitter/nvim-treesitter',

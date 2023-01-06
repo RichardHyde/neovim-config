@@ -28,6 +28,7 @@ The following plugins are incudes:-
 - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [jose-elias-alverez/typescript.nvim](https://github.com/jose-elias-alverez/typescript.nvim)
 - [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim)
+- [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 
 ## References
 

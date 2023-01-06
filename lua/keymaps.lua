@@ -43,3 +43,7 @@ keymap("v", "<c-k>", ":m '<-2<CR>gv=gv")
 -- Indenting
 keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
+
+-- nvim-tree
+keymap("n", "<Leader>e", ":NvimTreeToggle<CR>")
+
