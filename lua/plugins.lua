@@ -83,6 +83,11 @@ return packer.startup(function(use)
   use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
+  -- comment plugin
+  use {
+    "tpope/vim-commentary",
+    config = require("configs.vim-commentary"),
+  }
 
   if packer_bootstrap then
     require("packer").sync()

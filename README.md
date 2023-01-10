@@ -29,6 +29,7 @@ The following plugins are incudes:-
 - [jose-elias-alverez/typescript.nvim](https://github.com/jose-elias-alverez/typescript.nvim)
 - [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim)
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
+- [tpope/vim-commentary](https://guthub.com/tpope/vim-commentary)
 
 ## References
 
