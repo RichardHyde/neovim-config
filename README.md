@@ -1,5 +1,6 @@
 # neovim-config
-NeoVim config files
+
+NeoVim config files. The idea of this repository is to create a NeoVim setup which can be quickly and simply installed onto a computer and give me a standard set of tools.
 
 ## Install
 
