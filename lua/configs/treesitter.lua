@@ -8,7 +8,7 @@ print("Configuring TreeSitter")
 
 configs.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "lua", "rust", "javascript", "swift" },
+  ensure_installed = { "c", "lua", "rust", "javascript", "swift", "vim" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
