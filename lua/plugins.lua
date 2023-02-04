@@ -29,7 +29,7 @@ vim.cmd([[
 return packer.startup(function(use)
   -- packer can manage itself
   use("wbthomason/packer.nvim")
-  
+
   use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
   -- color schemes
@@ -39,8 +39,8 @@ return packer.startup(function(use)
 
   -- file explorer
   use {
-    "nvim-tree/nvim-tree.lua", 
-    config = require("configs.nvim-tree"), 
+   "nvim-tree/nvim-tree.lua",
+    config = require("configs.nvim-tree"),
   }
 
   -- Tree Sitter
@@ -55,7 +55,7 @@ return packer.startup(function(use)
 
   -- autocompletion
   use {-- completion plugin
-    "hrsh7th/nvim-cmp", 
+    "hrsh7th/nvim-cmp",
     config = require("configs.nvim-cmp"),
   }
   use("hrsh7th/cmp-buffer") -- source for text in buffer
@@ -68,13 +68,13 @@ return packer.startup(function(use)
 
   -- managing & installing lsp servers, linters & formatters
   use {
-    "williamboman/mason.nvim", 
+    "williamboman/mason.nvim",
     config = require("configs.mason")
   } -- in charge of managing lsp servers, linters & formatters
   use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
 
   -- configuring lsp servers
-  use { 
+  use {
     "neovim/nvim-lspconfig",
     config = require("configs.lspconfig"),
   }-- easily configure language servers

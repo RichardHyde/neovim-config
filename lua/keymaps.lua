@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-local function keymap(mode, lhs, rhs) 
+local function keymap(mode, lhs, rhs)
 
   if vim.fn.has('nvim-0.7') == 1 then
     vim.keymap.set(mode, lhs, rhs)
@@ -8,7 +8,7 @@ local function keymap(mode, lhs, rhs)
     vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true } )
   end
 end
-  
+
 
 -- open the config files
 keymap("n", "<Leader>Vi", ":e ~/.config/nvim/init.lua<CR>")
