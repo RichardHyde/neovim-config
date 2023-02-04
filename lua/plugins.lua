@@ -72,6 +72,8 @@ return packer.startup(function(use)
     config = require("configs.mason")
   } -- in charge of managing lsp servers, linters & formatters
   use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+  use("jose-elias-alvarez/null-ls.nvim")
+  use("jay-babu/mason-null-ls.nvim")
 
   -- configuring lsp servers
   use {
