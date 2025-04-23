@@ -3,5 +3,5 @@ if not setup then
   return
 end
 
-comentary.setup()
+-- commentary.setup()
 

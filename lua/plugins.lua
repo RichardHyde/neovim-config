@@ -91,6 +91,12 @@ return packer.startup(function(use)
     config = require("configs.vim-commentary"),
   }
 
+  -- git plugin
+  use {
+    "tpope/vim-fugitive",
+    config = require("configs.vim-fugitive"),
+  }
+
   if packer_bootstrap then
     require("packer").sync()
   end
