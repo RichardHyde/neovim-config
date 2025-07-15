@@ -1,103 +1,97 @@
--- auto install packer if not installed
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    vim.cmd([[packadd packer.nvim]])
-    return true
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
-  return false
 end
-local packer_bootstrap = ensure_packer() -- true if packer was just installed
-
--- import packer safely
-local status, packer = pcall(require, "packer")
-if not status then
-  return
-end
+vim.opt.rtp:prepend(lazypath)
 
 -- Run PackerCompile where this file is saved
-vim.cmd([[
-  augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup lazy_user_config
+--   autocmd!
+--   autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+--   augroup end
+-- ]])
 
--- add list of plugins to install
-return packer.startup(function(use)
-  -- packer can manage itself
-  use("wbthomason/packer.nvim")
+-- Setup lazy
+require("lazy").setup({
+  checker = { enabled = true }, -- check for updates
+  spec = {
+    {"nvim-lua/plenary.nvim"}, -- lua functions that many plugins use
 
-  use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+    -- color schemes
+    {"bluz71/vim-nightfly-guicolors"},
+    {"folke/tokyonight.nvim"},
+    {"christianchiarulli/nvcode-color-schemes.vim"},
 
-  -- color schemes
-  use("bluz71/vim-nightfly-guicolors")
-  use("folke/tokyonight.nvim")
-  use("christianchiarulli/nvcode-color-schemes.vim")
+    -- file explorer
+    { "nvim-tree/nvim-tree.lua", init = function()
+        require("configs.nvim-tree")
+      end},
 
-  -- file explorer
-  use {
-   "nvim-tree/nvim-tree.lua",
-    config = require("configs.nvim-tree"),
+    -- Tree Sitter
+    { 'nvim-treesitter/nvim-treesitter', init = function()
+        require("configs.treesitter")
+      end,
+      build = function()
+        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+        ts_update()
+      end,
+    },
+    -- autocompletion
+    {"hrsh7th/nvim-cmp", init = function()
+        require("configs.nvim-cmp")
+      end
+    },
+    {"hrsh7th/cmp-buffer"}, -- source for text in buffer
+    {"hrsh7th/cmp-path"}, -- source for file system paths
+
+    -- snippets
+    {"L3MON4D3/LuaSnip"}, -- snippet engine
+    {"saadparwaiz1/cmp_luasnip"}, -- for autocompletion
+    {"rafamadriz/friendly-snippets"}, -- useful snippets
+
+    -- managing & installing lsp servers, linters & formatters
+    { "williamboman/mason.nvim", init = function()
+        require("configs.mason")
+      end
+    }, -- in charge of managing lsp servers, linters & formatters
+    {"williamboman/mason-lspconfig.nvim"}, -- bridges gap b/w mason & lspconfig
+    {"jose-elias-alvarez/null-ls.nvim"},
+    {"jay-babu/mason-null-ls.nvim"},
+
+    -- configuring lsp servers
+    {"neovim/nvim-lspconfig", init = function()
+        require("configs.lspconfig")
+      end
+    }, -- easily configure language servers
+    {"hrsh7th/cmp-nvim-lsp"}, -- for autocompletion
+    {"glepnir/lspsaga.nvim"}, -- enhanced lsp uis
+    {"jose-elias-alvarez/typescript.nvim"}, -- additional functionality for typescript server (e.g. rename file & update imports)
+    {"onsails/lspkind.nvim"}, -- vs-code like icons for autocompletion
+
+    -- comment plugin
+    {"tpope/vim-commentary", init = function()
+        require("configs.vim-commentary")
+      end
+    },
+
+    -- git plugin
+    {"tpope/vim-fugitive", init = function()
+        require("configs.vim-fugitive")
+      end
+    },
+
   }
+})
 
-  -- Tree Sitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end,
-    config = require("configs.treesitter"),
-  }
-
-  -- autocompletion
-  use {-- completion plugin
-    "hrsh7th/nvim-cmp",
-    config = require("configs.nvim-cmp"),
-  }
-  use("hrsh7th/cmp-buffer") -- source for text in buffer
-  use("hrsh7th/cmp-path") -- source for file system paths
-
-  -- snippets
-  use("L3MON4D3/LuaSnip") -- snippet engine
-  use("saadparwaiz1/cmp_luasnip") -- for autocompletion
-  use("rafamadriz/friendly-snippets") -- useful snippets
-
-  -- managing & installing lsp servers, linters & formatters
-  use {
-    "williamboman/mason.nvim",
-    config = require("configs.mason")
-  } -- in charge of managing lsp servers, linters & formatters
-  use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
-  use("jose-elias-alvarez/null-ls.nvim")
-  use("jay-babu/mason-null-ls.nvim")
-
-  -- configuring lsp servers
-  use {
-    "neovim/nvim-lspconfig",
-    config = require("configs.lspconfig"),
-  }-- easily configure language servers
-  use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-  use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
-  use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
-
-  -- comment plugin
-  use {
-    "tpope/vim-commentary",
-    config = require("configs.vim-commentary"),
-  }
-
-  -- git plugin
-  use {
-    "tpope/vim-fugitive",
-    config = require("configs.vim-fugitive"),
-  }
-
-  if packer_bootstrap then
-    require("packer").sync()
-  end
-end)
