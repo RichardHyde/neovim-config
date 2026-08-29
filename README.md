@@ -31,6 +31,7 @@ The following plugins are incudes:-
 - [onsails/lspkind.nvim](https://github.com/onsails/lspkind.nvim)
 - [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 - [tpope/vim-commentary](https://guthub.com/tpope/vim-commentary)
+- [tpope/vim-fugitive](https://guthub.com/tpope/vim-fugitive)
 - [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 - [jay-babu/mason-null-ls.nvim](https://github.com/jay-badu/mason-null-ls.nvim)
 
