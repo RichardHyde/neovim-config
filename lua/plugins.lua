@@ -67,7 +67,8 @@ require("lazy").setup({
       end
     }, -- in charge of managing lsp servers, linters & formatters
     {"williamboman/mason-lspconfig.nvim"}, -- bridges gap b/w mason & lspconfig
-    {"jose-elias-alvarez/null-ls.nvim"},
+    -- {"jose-elias-alvarez/null-ls.nvim"},
+    {"nvimtools/none-ls.nvim"},
     {"jay-babu/mason-null-ls.nvim"},
 
     -- configuring lsp servers
@@ -77,7 +78,7 @@ require("lazy").setup({
     }, -- easily configure language servers
     {"hrsh7th/cmp-nvim-lsp"}, -- for autocompletion
     {"glepnir/lspsaga.nvim"}, -- enhanced lsp uis
-    {"jose-elias-alvarez/typescript.nvim"}, -- additional functionality for typescript server (e.g. rename file & update imports)
+    -- {"jose-elias-alvarez/typescript.nvim"}, -- additional functionality for typescript server (e.g. rename file & update imports)
     {"onsails/lspkind.nvim"}, -- vs-code like icons for autocompletion
 
     -- comment plugin
