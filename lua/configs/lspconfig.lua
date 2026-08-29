@@ -1,8 +1,8 @@
 -- import lspconfig plugin safely
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status then
-  return
-end
+--local lspconfig_status, lspconfig = pcall(require, "lspconfig")
+--if not lspconfig_status then
+--  return
+--end
 
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -57,10 +57,12 @@ for type, icon in pairs(signs) do
 end
 
 -- configure html server
-lspconfig["html"].setup({
+-- lspconfig["html"].setup({
+vim.lsp.config("html", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable("html")
 
 -- configure typescript server with plugin
 typescript.setup({
@@ -71,10 +73,12 @@ typescript.setup({
 })
 
 -- configure css server
-lspconfig["cssls"].setup({
+-- lspconfig["cssls"].setup({
+vim.lsp.config("cssls", {
   capabilities = capabilities,
   on_attach = on_attach,
 })
+vim.lsp.enable("cssls")
 
 -- configure tailwindcss server
 --lspconfig["tailwindcss"].setup({
@@ -83,14 +87,17 @@ lspconfig["cssls"].setup({
 --})
 
 -- configure emmet language server
-lspconfig["emmet_ls"].setup({
+-- lspconfig["emmet_ls"].setup({
+vim.lsp.config("emmet_ls", {
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
+vim.lsp.enable("emmet_ls")
 
 -- configure lua server (with special settings)
-lspconfig["lua_ls"].setup({
+-- lspconfig["lua_ls"].setup({
+vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   on_attach = on_attach,
   settings = { -- custom settings for lua
@@ -109,3 +116,5 @@ lspconfig["lua_ls"].setup({
     },
   },
 })
+vim.lsp.enable("lua_ls")
+
