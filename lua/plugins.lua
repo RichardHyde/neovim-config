@@ -43,10 +43,7 @@ require("lazy").setup({
     { 'nvim-treesitter/nvim-treesitter', init = function()
         require("configs.treesitter")
       end,
-      build = function()
-        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-        ts_update()
-      end,
+      build = ':TSUpdate'
     },
     -- autocompletion
     {"hrsh7th/nvim-cmp", init = function()
